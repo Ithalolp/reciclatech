@@ -1,0 +1,470 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="ReciclaTech — Encontre o destino certo para o seu eletrônico. Plataforma de localização de pontos de descarte de resíduos eletrônicos."
+    />
+    <title>ReciclaTech — Tecnologia a favor da reciclagem</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/variables.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/home.css" />
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header class="site-header">
+      <div class="container header-inner">
+        <a href="index.html" class="logo">
+          <span class="logo__icon" aria-hidden="true">♻️</span>
+          <span class="logo__text" data-nome-plataforma>ReciclaTech</span>
+        </a>
+        <button
+          class="menu-toggle"
+          data-menu-toggle
+          aria-label="Abrir menu"
+          aria-expanded="false"
+        >
+          ☰
+        </button>
+        <nav class="site-nav" data-nav aria-label="Navegação principal">
+          <a href="index.html">Início</a>
+          <a href="mapa.html">Mapa</a>
+          <a href="educacao.html">Educação</a>
+          <a href="sobre.html">Sobre</a>
+          <a href="admin.html" class="nav-admin">Admin</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- HERO -->
+      <section class="hero">
+        <div class="container hero__grid">
+          <div class="hero__texto">
+            <span class="hero__tag"
+              >Projeto de Extensão · Sistemas de Informação</span
+            >
+            <h1>Encontre o destino certo para o seu eletrônico.</h1>
+            <p class="hero__sub">
+              Descarte celulares, pilhas, computadores e outros resíduos
+              eletrônicos em locais adequados. Simples, rápido e gratuito.
+            </p>
+            <div class="hero__acoes">
+              <a href="#encontrar" class="btn btn--primary btn--lg"
+                >Encontrar ponto de descarte</a
+              >
+              <a href="#como-funciona" class="btn btn--ghost btn--lg"
+                >Como funciona?</a
+              >
+            </div>
+            <ul class="hero__stats">
+              <li>
+                <strong data-stat-pontos>0</strong
+                ><span>pontos cadastrados</span>
+              </li>
+              <li>
+                <strong data-stat-categorias>0</strong><span>categorias</span>
+              </li>
+              <li><strong data-stat-cidades>0</strong><span>cidades</span></li>
+            </ul>
+          </div>
+          <div class="hero__arte" aria-hidden="true">
+            <div class="hero__circulo"></div>
+            <div class="hero__icone">📍</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- O PROBLEMA -->
+      <section class="secao secao--problema" id="problema">
+        <div class="container">
+          <header class="secao__cabecalho">
+            <span class="secao__tag">O problema</span>
+            <h2>O lixo eletrônico é um dos que mais cresce no mundo</h2>
+            <p>
+              Quando descartado incorretamente, ele contamina o solo, a água e
+              coloca em risco a saúde de quem manipula esses resíduos.
+            </p>
+          </header>
+          <div class="grid-cards">
+            <article class="card-estat">
+              <span class="card-estat__numero">62 mi</span>
+              <p class="card-estat__texto">
+                toneladas de e-lixo geradas globalmente em um único ano.
+              </p>
+              <span class="card-estat__fonte"
+                >Fonte: Global E-waste Monitor (ONU)</span
+              >
+            </article>
+            <article class="card-estat">
+              <span class="card-estat__numero">~22%</span>
+              <p class="card-estat__texto">
+                é a fração do e-lixo mundial que é formalmente reciclada.
+              </p>
+              <span class="card-estat__fonte"
+                >Fonte: Global E-waste Monitor (ONU)</span
+              >
+            </article>
+            <article class="card-estat">
+              <span class="card-estat__numero">+60</span>
+              <p class="card-estat__texto">
+                elementos químicos podem estar presentes em um único aparelho
+                eletrônico.
+              </p>
+              <span class="card-estat__fonte"
+                >Referência: ONU Meio Ambiente</span
+              >
+            </article>
+            <article class="card-estat">
+              <span class="card-estat__numero">100%</span>
+              <p class="card-estat__texto">
+                do descarte pode ser feito corretamente quando você sabe onde
+                ir.
+              </p>
+              <span class="card-estat__fonte">— ReciclaTech</span>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- COMO FUNCIONA -->
+      <section class="secao secao--como" id="como-funciona">
+        <div class="container">
+          <header class="secao__cabecalho">
+            <span class="secao__tag">Como funciona</span>
+            <h2>Em 3 passos, você encontra o lugar certo</h2>
+          </header>
+          <ol class="passos">
+            <li class="passo">
+              <span class="passo__num">1</span>
+              <h3>Escolha o material</h3>
+              <p>Selecione aquilo que deseja descartar.</p>
+            </li>
+            <li class="passo">
+              <span class="passo__num">2</span>
+              <h3>Encontre um ponto</h3>
+              <p>Veja os locais disponíveis no mapa.</p>
+            </li>
+            <li class="passo">
+              <span class="passo__num">3</span>
+              <h3>Faça o descarte correto</h3>
+              <p>Confira as informações e abra a localização no Google Maps.</p>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- ENCONTRE UM PONTO -->
+      <section class="secao secao--encontrar" id="encontrar">
+        <div class="container">
+          <header class="secao__cabecalho">
+            <span class="secao__tag">Encontre um ponto</span>
+            <h2>O que você deseja descartar?</h2>
+            <p>
+              Use os filtros abaixo — o mapa e a lista se atualizam na hora.
+            </p>
+          </header>
+
+          <form class="filtros" id="form-filtros" onsubmit="return false;">
+            <div class="filtros__campo">
+              <label for="filtro-categoria">Material</label>
+              <select id="filtro-categoria" name="categoria"></select>
+            </div>
+            <div class="filtros__campo">
+              <label for="filtro-cidade">Cidade</label>
+              <select id="filtro-cidade" name="cidade"></select>
+            </div>
+            <div class="filtros__campo filtros__campo--busca">
+              <label for="filtro-busca">Buscar por nome ou bairro</label>
+              <input
+                type="search"
+                id="filtro-busca"
+                name="busca"
+                placeholder="Ex.: Centro, Ecoponto..."
+              />
+            </div>
+          </form>
+
+          <div class="encontrar__grid">
+            <div
+              class="encontrar__mapa"
+              id="mapa-home"
+              role="application"
+              aria-label="Mapa de pontos de coleta"
+            ></div>
+            <aside class="encontrar__lista" aria-live="polite">
+              <p class="encontrar__contador" id="contador-pontos">
+                Carregando...
+              </p>
+              <div id="lista-pontos" class="lista-pontos"></div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <!-- MATERIAIS -->
+      <section class="secao secao--materiais" id="materiais">
+        <div class="container">
+          <header class="secao__cabecalho">
+            <span class="secao__tag">Materiais</span>
+            <h2>O que você pode descartar aqui</h2>
+          </header>
+          <div class="grid-materiais" id="grid-materiais"></div>
+        </div>
+      </section>
+
+      <!-- EDUCAÇÃO AMBIENTAL -->
+      <section class="secao secao--educacao">
+        <div class="container">
+          <header class="secao__cabecalho">
+            <span class="secao__tag">Educação ambiental</span>
+            <h2>Reciclar é só o começo</h2>
+            <p>
+              Entenda por que o descarte correto importa e como pequenas
+              atitudes fazem diferença.
+            </p>
+          </header>
+          <div class="grid-cards grid-cards--edu">
+            <article class="card-edu">
+              <span class="card-edu__icone">⚠️</span>
+              <h3>Por que o descarte irregular é perigoso?</h3>
+              <p>
+                Metais pesados como chumbo e mercúrio podem contaminar o solo e
+                a água.
+              </p>
+            </article>
+            <article class="card-edu">
+              <span class="card-edu__icone">♻️</span>
+              <h3>O que pode ser reciclado?</h3>
+              <p>
+                Placas, cabos, plásticos e metais podem voltar à cadeia
+                produtiva.
+              </p>
+            </article>
+            <article class="card-edu">
+              <span class="card-edu__icone">🔧</span>
+              <h3>Reutilização</h3>
+              <p>
+                Antes de descartar, considere reparar, doar ou dar um novo uso
+                ao aparelho.
+              </p>
+            </article>
+            <article class="card-edu">
+              <span class="card-edu__icone">🧠</span>
+              <h3>Consumo consciente</h3>
+              <p>
+                Comprar menos e melhor reduz o impacto ambiental a longo prazo.
+              </p>
+            </article>
+          </div>
+          <div class="secao__cta">
+            <a href="educacao.html" class="btn btn--primary"
+              >Ver guia completo de educação ambiental</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- SOBRE -->
+      <section class="secao secao--sobre">
+        <div class="container sobre__grid">
+          <div>
+            <span class="secao__tag">Sobre o projeto</span>
+            <h2>Uma plataforma feita para a comunidade</h2>
+            <p>
+              O <span data-nome-plataforma>ReciclaTech</span> nasceu como
+              projeto de extensão universitária da disciplina de Atividades
+              Práticas Interdisciplinares de Extensão, do curso de Sistemas de
+              Informação, na área de Tecnologia e Sociedade.
+            </p>
+            <p>
+              Nasceu com foco em Juazeiro do Norte — CE, mas foi arquitetado
+              para crescer: qualquer cidade pode ser adicionada pelo painel
+              administrativo, sem alterar o código.
+            </p>
+            <a href="sobre.html" class="btn btn--ghost">Conhecer o projeto</a>
+          </div>
+          <div class="sobre__ilustracao" aria-hidden="true">
+            <span>🎓</span><span>💻</span><span>🌱</span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div class="footer-col">
+          <a href="index.html" class="logo logo--footer">
+            <span class="logo__icon" aria-hidden="true">♻️</span>
+            <span class="logo__text" data-nome-plataforma>ReciclaTech</span>
+          </a>
+          <p class="footer-desc">
+            Plataforma de localização de pontos de descarte de resíduos
+            eletrônicos e educação ambiental. Iniciativa de extensão
+            universitária.
+          </p>
+        </div>
+        <div class="footer-col">
+          <h4>Navegar</h4>
+          <ul>
+            <li><a href="index.html">Início</a></li>
+            <li><a href="mapa.html">Mapa</a></li>
+            <li><a href="educacao.html">Educação</a></li>
+            <li><a href="sobre.html">Sobre</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Materiais</h4>
+          <ul id="footer-categorias"></ul>
+        </div>
+        <div class="footer-col">
+          <h4>Institucional</h4>
+          <ul>
+            <li>Curso de Sistemas de Informação</li>
+            <li>Atividades Práticas Interdisciplinares de Extensão</li>
+            <li>Tecnologia e Sociedade</li>
+            <li><a href="admin.html">Área administrativa</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-base">
+        <div class="container footer-base__inner">
+          <p>
+            © <span data-ano></span>
+            <span data-nome-plataforma>ReciclaTech</span> — Projeto de Extensão
+            Universitária.
+          </p>
+          <p>Feito com HTML, CSS e JavaScript.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script type="module">
+      import { bootstrap } from "./js/main.js";
+      import { Pontos, Categorias } from "./js/dataService.js";
+      import {
+        htmlListaPontos,
+        preencherSelectCategorias,
+        preencherSelectCidades,
+        toast,
+      } from "./js/ui.js";
+      import {
+        iniciarMapa,
+        adicionarMarcadores,
+        focarPonto,
+      } from "./js/map.js";
+      import { debounce, $, $$ } from "./js/utils.js";
+
+      await bootstrap();
+
+      // Stats do hero
+      const pontos = Pontos.listar({ apenasAtivos: true });
+      $("[data-stat-pontos]").textContent = pontos.length;
+      $("[data-stat-categorias]").textContent = Categorias.listar().length;
+      $("[data-stat-cidades]").textContent = Pontos.cidadesDisponiveis().length;
+
+      // Grid de materiais
+      const gridMat = $("#grid-materiais");
+      gridMat.innerHTML = Categorias.listar()
+        .map(
+          (c) => `
+    <button class="card-material" data-cat="${c.id}" type="button">
+      <span class="card-material__icone" aria-hidden="true">${c.icone}</span>
+      <h3>${c.nome}</h3>
+      <p>${c.descricao || ""}</p>
+      <span class="card-material__acao">Buscar pontos →</span>
+    </button>
+  `,
+        )
+        .join("");
+
+      // Footer categorias
+      const footerCats = $("#footer-categorias");
+      footerCats.innerHTML = Categorias.listar()
+        .map(
+          (c) =>
+            `<li><a href="mapa.html?cat=${c.id}">${c.icone} ${c.nome}</a></li>`,
+        )
+        .join("");
+
+      // Filtros
+      const selCat = $("#filtro-categoria");
+      const selCid = $("#filtro-cidade");
+      const inpBusca = $("#filtro-busca");
+      preencherSelectCategorias(selCat);
+      preencherSelectCidades(selCid, Pontos.cidadesDisponiveis());
+
+      // Mapa
+      iniciarMapa("mapa-home");
+
+      const listaEl = $("#lista-pontos");
+      const contadorEl = $("#contador-pontos");
+
+      function atualizar() {
+        const filtros = {
+          categoriaId: selCat.value || null,
+          cidade: selCid.value || null,
+          termo: inpBusca.value.trim() || null,
+        };
+        const encontrados = Pontos.filtrar(filtros);
+
+        contadorEl.textContent =
+          encontrados.length === 0
+            ? "Nenhum ponto encontrado"
+            : `${encontrados.length} ponto${encontrados.length > 1 ? "s" : ""} encontrado${encontrados.length > 1 ? "s" : ""}`;
+
+        htmlListaPontos(encontrados, listaEl, { compacto: true });
+        adicionarMarcadores(encontrados);
+      }
+
+      selCat.addEventListener("change", atualizar);
+      selCid.addEventListener("change", atualizar);
+      inpBusca.addEventListener("input", debounce(atualizar, 250));
+
+      // Clique no card → foca no mapa
+      listaEl.addEventListener("click", (e) => {
+        const card = e.target.closest(".card-ponto");
+        if (card && !e.target.closest("a")) {
+          focarPonto(card.dataset.id);
+          document
+            .getElementById("mapa-home")
+            .scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+      });
+
+      // Clique no card de material → filtra
+      gridMat.addEventListener("click", (e) => {
+        const btn = e.target.closest(".card-material");
+        if (!btn) return;
+        selCat.value = btn.dataset.cat;
+        atualizar();
+        document
+          .getElementById("encontrar")
+          .scrollIntoView({ behavior: "smooth" });
+      });
+
+      // URL params (ex.: index.html?cat=1)
+      const params = new URLSearchParams(location.search);
+      if (params.get("cat")) {
+        selCat.value = params.get("cat");
+        atualizar();
+        document
+          .getElementById("encontrar")
+          .scrollIntoView({ behavior: "smooth" });
+      } else {
+        atualizar();
+      }
+    </script>
+  </body>
+</html>

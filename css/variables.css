@@ -1,0 +1,50 @@
+:root {
+  /* Cores */
+  --cor-primaria: #0f9d58;
+  --cor-primaria-escura: #0b7a44;
+  --cor-primaria-clara: #e6f6ed;
+  --cor-acento: #14b8a6;
+  --cor-tech: #1e293b;
+  --cor-tech-2: #0f172a;
+
+  --cor-texto: #0f172a;
+  --cor-texto-suave: #475569;
+  --cor-texto-claro: #94a3b8;
+
+  --cor-bg: #ffffff;
+  --cor-bg-alt: #f8fafc;
+  --cor-bg-suave: #f1f5f9;
+
+  --cor-borda: #e2e8f0;
+  --cor-erro: #dc2626;
+  --cor-sucesso: #16a34a;
+  --cor-alerta: #d97706;
+
+  /* Tipografia */
+  --fonte: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --fonte-mono: ui-monospace, "SF Mono", Menlo, monospace;
+
+  /* Espaçamento */
+  --esp-1: 4px;
+  --esp-2: 8px;
+  --esp-3: 12px;
+  --esp-4: 16px;
+  --esp-5: 24px;
+  --esp-6: 32px;
+  --esp-7: 48px;
+  --esp-8: 64px;
+
+  /* Raios */
+  --raio-sm: 6px;
+  --raio: 10px;
+  --raio-lg: 16px;
+  --raio-pill: 999px;
+
+  /* Sombras */
+  --sombra-sm: 0 1px 2px rgba(15, 23, 42, 0.06);
+  --sombra: 0 4px 12px rgba(15, 23, 42, 0.08);
+  --sombra-lg: 0 12px 32px rgba(15, 23, 42, 0.12);
+
+  /* Container */
+  --largura-container: 1180px;
+}

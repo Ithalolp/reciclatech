@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Educação ambiental — ReciclaTech</title>
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/variables.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a href="index.html" class="logo"
+          ><span class="logo__icon">♻️</span
+          ><span class="logo__text" data-nome-plataforma>ReciclaTech</span></a
+        >
+        <button
+          class="menu-toggle"
+          data-menu-toggle
+          aria-label="Abrir menu"
+          aria-expanded="false"
+        >
+          ☰
+        </button>
+        <nav class="site-nav" data-nav aria-label="Navegação principal">
+          <a href="index.html">Início</a><a href="mapa.html">Mapa</a>
+          <a href="educacao.html">Educação</a><a href="sobre.html">Sobre</a>
+          <a href="admin.html" class="nav-admin">Admin</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container pagina-interna">
+      <header class="pagina-cabecalho">
+        <span class="secao__tag">Educação ambiental</span>
+        <h1>Guia rápido de descarte consciente</h1>
+        <p>
+          Informações objetivas para você entender o impacto do lixo eletrônico
+          e agir melhor.
+        </p>
+      </header>
+
+      <div class="grid-edu-completo">
+        <article class="bloco-edu">
+          <h2>💡 O que é lixo eletrônico?</h2>
+          <p>
+            São equipamentos elétricos e eletrônicos descartados: celulares,
+            computadores, TVs, pilhas, baterias, cabos e pequenos
+            eletrodomésticos.
+          </p>
+        </article>
+        <article class="bloco-edu">
+          <h2>⚠️ Por que ele é perigoso?</h2>
+          <p>
+            Contém metais pesados (chumbo, mercúrio, cádmio) que, em contato com
+            o solo e a água, causam contaminação e riscos à saúde.
+          </p>
+        </article>
+        <article class="bloco-edu">
+          <h2>♻️ O que pode ser reciclado?</h2>
+          <p>
+            Cobre, alumínio, ouro, prata, plásticos e vidros podem ser
+            recuperados e reinseridos na indústria, reduzindo a extração de
+            matéria-prima.
+          </p>
+        </article>
+        <article class="bloco-edu">
+          <h2>🔧 Como preparar um eletrônico para descarte?</h2>
+          <ol>
+            <li>Apague seus dados pessoais.</li>
+            <li>Remova senhas e contas vinculadas.</li>
+            <li>Retire acessórios (cartão SIM, pen drives).</li>
+            <li>Se possível, mantenha o carregador junto.</li>
+          </ol>
+        </article>
+        <article class="bloco-edu">
+          <h2>🔄 Reutilização</h2>
+          <p>
+            Antes de descartar, considere reparar, doar para escolas, ONGs ou
+            pessoas que possam dar um novo uso. Reutilizar é melhor que
+            reciclar.
+          </p>
+        </article>
+        <article class="bloco-edu">
+          <h2>🧠 Consumo consciente</h2>
+          <p>
+            Compre apenas o necessário, prefira produtos duráveis e com
+            assistência técnica. Cada aparelho evitado é uma vitória ambiental.
+          </p>
+        </article>
+        <article class="bloco-edu">
+          <h2>🌍 Descarte ambientalmente adequado</h2>
+          <p>
+            Entregue em pontos de coleta autorizados — como os listados no nosso
+            mapa — para garantir que os resíduos sejam tratados corretamente.
+          </p>
+        </article>
+        <article class="bloco-edu bloco-edu--cta">
+          <h2>Pronto para agir?</h2>
+          <p>Encontre agora o ponto mais próximo e faça o descarte correto.</p>
+          <a href="mapa.html" class="btn btn--primary">Ir para o mapa</a>
+        </article>
+      </div>
+    </main>
+
+    <footer class="site-footer site-footer--simple">
+      <div class="container footer-base__inner">
+        <p>
+          © <span data-ano></span> <span data-nome-plataforma>ReciclaTech</span>
+        </p>
+        <p><a href="index.html">Início</a></p>
+      </div>
+    </footer>
+
+    <script type="module">
+      import { bootstrap } from "./js/main.js";
+      await bootstrap();
+    </script>
+  </body>
+</html>

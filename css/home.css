@@ -1,0 +1,317 @@
+/* ---------- HERO ---------- */
+.hero {
+  background: linear-gradient(160deg, #ecfdf5 0%, #ffffff 60%);
+  padding: var(--esp-8) 0;
+  overflow: hidden;
+}
+.hero__grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: var(--esp-6);
+  align-items: center;
+}
+.hero__tag {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--cor-primaria-escura);
+  background: var(--cor-primaria-clara);
+  padding: 6px 14px;
+  border-radius: var(--raio-pill);
+  margin-bottom: var(--esp-4);
+}
+.hero h1 {
+  margin-bottom: var(--esp-4);
+}
+.hero__sub {
+  font-size: 1.1rem;
+  margin-bottom: var(--esp-5);
+  max-width: 540px;
+}
+.hero__acoes {
+  display: flex;
+  gap: var(--esp-3);
+  flex-wrap: wrap;
+}
+
+.hero__stats {
+  display: flex;
+  gap: var(--esp-6);
+  margin-top: var(--esp-6);
+  padding-top: var(--esp-5);
+  border-top: 1px solid var(--cor-borda);
+}
+.hero__stats li {
+  display: flex;
+  flex-direction: column;
+}
+.hero__stats strong {
+  font-size: 1.8rem;
+  color: var(--cor-primaria-escura);
+}
+.hero__stats span {
+  font-size: 0.85rem;
+  color: var(--cor-texto-suave);
+}
+
+.hero__arte {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 320px;
+}
+.hero__circulo {
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #34d399, #059669);
+  filter: blur(2px);
+  opacity: 0.15;
+}
+.hero__icone {
+  font-size: 8rem;
+  animation: flutuar 4s ease-in-out infinite;
+}
+@keyframes flutuar {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@media (max-width: 780px) {
+  .hero__grid {
+    grid-template-columns: 1fr;
+  }
+  .hero__arte {
+    min-height: 200px;
+    order: -1;
+  }
+  .hero__icone {
+    font-size: 5rem;
+  }
+  .hero__stats {
+    gap: var(--esp-4);
+  }
+  .hero__stats strong {
+    font-size: 1.4rem;
+  }
+}
+
+/* ---------- CARDS DE ESTATÍSTICA ---------- */
+.grid-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--esp-4);
+}
+.card-estat {
+  background: #fff;
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  padding: var(--esp-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--esp-2);
+}
+.card-estat__numero {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--cor-primaria-escura);
+  letter-spacing: -0.02em;
+}
+.card-estat__texto {
+  font-size: 0.95rem;
+}
+.card-estat__fonte {
+  font-size: 0.75rem;
+  color: var(--cor-texto-claro);
+  margin-top: auto;
+}
+
+/* ---------- PASSOS ---------- */
+.passos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--esp-4);
+  counter-reset: passo;
+}
+.passo {
+  background: #fff;
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  padding: var(--esp-5);
+  position: relative;
+}
+.passo__num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--cor-primaria);
+  color: #fff;
+  font-weight: 800;
+  font-size: 1.1rem;
+  margin-bottom: var(--esp-3);
+}
+.passo h3 {
+  margin-bottom: var(--esp-2);
+}
+
+/* ---------- ENCONTRAR ---------- */
+.encontrar__grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: var(--esp-4);
+  align-items: stretch;
+}
+.encontrar__mapa {
+  min-height: 520px;
+  border-radius: var(--raio-lg);
+  overflow: hidden;
+  border: 1px solid var(--cor-borda);
+  background: var(--cor-bg-suave);
+}
+.encontrar__lista {
+  background: #fff;
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-lg);
+  padding: var(--esp-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--esp-3);
+  max-height: 520px;
+  overflow-y: auto;
+}
+.encontrar__contador {
+  font-size: 0.85rem;
+  color: var(--cor-texto-suave);
+  font-weight: 600;
+}
+
+.lista-pontos {
+  display: flex;
+  flex-direction: column;
+  gap: var(--esp-3);
+}
+
+@media (max-width: 900px) {
+  .encontrar__grid {
+    grid-template-columns: 1fr;
+  }
+  .encontrar__mapa {
+    min-height: 380px;
+  }
+  .encontrar__lista {
+    max-height: 500px;
+  }
+}
+
+/* ---------- MATERIAIS ---------- */
+.grid-materiais {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--esp-4);
+}
+.card-material {
+  background: #fff;
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  padding: var(--esp-5);
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    border-color 0.15s ease;
+}
+.card-material:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--sombra);
+  border-color: var(--cor-primaria);
+}
+.card-material__icone {
+  font-size: 2rem;
+}
+.card-material h3 {
+  font-size: 1rem;
+}
+.card-material p {
+  font-size: 0.85rem;
+}
+.card-material__acao {
+  margin-top: auto;
+  padding-top: var(--esp-3);
+  color: var(--cor-primaria);
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+/* ---------- EDUCAÇÃO (HOME) ---------- */
+.grid-cards--edu {
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+.card-edu {
+  background: #fff;
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  padding: var(--esp-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--esp-2);
+}
+.card-edu__icone {
+  font-size: 1.8rem;
+}
+.card-edu h3 {
+  font-size: 1rem;
+}
+.card-edu p {
+  font-size: 0.9rem;
+}
+
+/* ---------- SOBRE (HOME) ---------- */
+.sobre__grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: var(--esp-6);
+  align-items: center;
+}
+.sobre__grid p {
+  margin-bottom: var(--esp-3);
+  max-width: 560px;
+}
+.sobre__ilustracao {
+  display: flex;
+  justify-content: center;
+  gap: var(--esp-4);
+  font-size: 4rem;
+}
+.sobre__ilustracao span {
+  animation: flutuar 3s ease-in-out infinite;
+}
+.sobre__ilustracao span:nth-child(2) {
+  animation-delay: 0.3s;
+}
+.sobre__ilustracao span:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+@media (max-width: 780px) {
+  .sobre__grid {
+    grid-template-columns: 1fr;
+  }
+  .sobre__ilustracao {
+    font-size: 3rem;
+  }
+}

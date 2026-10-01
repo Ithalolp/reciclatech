@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Detalhes do ponto — ReciclaTech</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/variables.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a href="index.html" class="logo">
+          <span class="logo__icon" aria-hidden="true">♻️</span>
+          <span class="logo__text" data-nome-plataforma>ReciclaTech</span>
+        </a>
+        <button
+          class="menu-toggle"
+          data-menu-toggle
+          aria-label="Abrir menu"
+          aria-expanded="false"
+        >
+          ☰
+        </button>
+        <nav class="site-nav" data-nav aria-label="Navegação principal">
+          <a href="index.html">Início</a>
+          <a href="mapa.html">Mapa</a>
+          <a href="educacao.html">Educação</a>
+          <a href="sobre.html">Sobre</a>
+          <a href="admin.html" class="nav-admin">Admin</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="pagina-ponto container" id="conteudo-ponto">
+      <p class="carregando">Carregando...</p>
+    </main>
+
+    <footer class="site-footer site-footer--simple">
+      <div class="container footer-base__inner">
+        <p>
+          © <span data-ano></span> <span data-nome-plataforma>ReciclaTech</span>
+        </p>
+        <p><a href="mapa.html">Voltar ao mapa</a></p>
+      </div>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script type="module" src="js/pagina-ponto.js"></script>
+  </body>
+</html>
