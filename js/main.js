@@ -3,6 +3,7 @@ import { garantirSeed } from "./seed.js";
 import { Auth } from "./auth.js";
 import { $, $$ } from "./utils.js";
 import { icone } from "./icons.js";
+import { iniciarCtaFlow } from "./ctaFlow.js";
 
 const reduzMovimento = window.matchMedia(
   "(prefers-reduced-motion: reduce)",
@@ -495,6 +496,11 @@ export async function bootstrap() {
     ativarCTA();
   } catch (e) {
     console.warn("cta", e);
+  }
+  try {
+    iniciarCtaFlow();
+  } catch (e) {
+    console.warn("cta-flow", e);
   }
   try {
     configurarRipple();

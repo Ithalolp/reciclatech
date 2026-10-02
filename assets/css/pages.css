@@ -1405,7 +1405,6 @@
     letter-spacing: 0.12em;
   }
 }
-
 /* ========================================================
    CTA FINAL — ENCERRAMENTO CONCEITUAL
    ======================================================== */
@@ -1453,13 +1452,11 @@
   transform: translate(-50%, -50%);
   will-change: transform;
 }
-
 .cta-final__ring--1 {
   width: 520px;
   height: 520px;
   animation: ctaRingSpin 60s linear infinite;
 }
-
 .cta-final__ring--2 {
   width: 760px;
   height: 760px;
@@ -1467,14 +1464,12 @@
   border-color: rgba(255, 255, 255, 0.05);
   animation: ctaRingSpin 90s linear infinite reverse;
 }
-
 .cta-final__ring--3 {
   width: 1040px;
   height: 1040px;
   border-color: rgba(0, 230, 118, 0.05);
   animation: ctaRingSpin 120s linear infinite;
 }
-
 @keyframes ctaRingSpin {
   to {
     transform: translate(-50%, -50%) rotate(360deg);
@@ -1497,7 +1492,6 @@
     );
   animation: ctaGlowPulse 9s ease-in-out infinite alternate;
 }
-
 @keyframes ctaGlowPulse {
   from {
     opacity: 0.7;
@@ -1513,7 +1507,6 @@
   width: 100%;
   height: 100%;
 }
-
 .cta-final__dot {
   fill: var(--c-accent);
   opacity: 0.18;
@@ -1521,7 +1514,6 @@
   transform-box: fill-box;
   animation: ctaDotPulse 4.5s ease-in-out infinite;
 }
-
 .cta-final__dot:nth-child(1) {
   animation-delay: 0s;
 }
@@ -1549,7 +1541,6 @@
 .cta-final__dot:nth-child(9) {
   animation-delay: 3.2s;
 }
-
 @keyframes ctaDotPulse {
   0%,
   100% {
@@ -1569,7 +1560,6 @@
   fill: none;
   animation: ctaLineFlow 8s linear infinite;
 }
-
 @keyframes ctaLineFlow {
   to {
     stroke-dashoffset: -90;
@@ -1598,7 +1588,6 @@
   letter-spacing: 0.22em;
   color: var(--c-accent-hi);
 }
-
 .cta-final__eyebrow::before,
 .cta-final__eyebrow::after {
   content: "";
@@ -1618,7 +1607,6 @@
   margin: 0;
   text-wrap: balance;
 }
-
 .cta-final__title em {
   font-style: normal;
   color: var(--c-accent-hi);
@@ -1634,7 +1622,6 @@
   opacity: 0;
   transform: translateY(14px);
 }
-
 .cta-final[data-anim] .cta-final__eyebrow,
 .cta-final[data-anim] .cta-final__title,
 .cta-final[data-anim] .cta-flow,
@@ -1694,29 +1681,46 @@
 
 /* ========================================================
    FLUXO — REUTILIZAR → REPARAR → DESTINAR
-   ======================================================== */
+   ========================================================
+   Estrutura de cada step (desktop):
+      01 ─────►        02 ─────►        03
+      ●                ●               ●
+   REUTILIZAR       REPARAR      DESTINAR CORRETAMENTE
+
+   A linha + seta fica AO LADO do número, no mesmo nível,
+   à direita da bolinha. */
 .cta-flow {
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  gap: clamp(10px, 2vw, 28px);
+  gap: clamp(20px, 3vw, 48px);
   margin-top: var(--s-4);
   width: 100%;
   max-width: 900px;
+  padding-top: 6px;
 }
 
 .cta-flow__step {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   flex: 0 0 auto;
+  position: relative;
+  min-width: 110px;
+}
+
+/* Bloco do topo: número + bolinha (alinhados lado a lado) */
+.cta-flow__step-head {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   position: relative;
 }
 
 .cta-flow__num {
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.14em;
   color: var(--c-accent-hi);
@@ -1724,14 +1728,7 @@
   transition: opacity 0.4s var(--ease);
 }
 
-/* ============================================================
-   DOT — animação "selecionado" (todas as 3 piscam em sequência)
-   ============================================================
-   Ciclo total: 9s (3 etapas × 3s cada).
-   Cada dot roda a MESMA keyframes com delay progressivo (0s, 3s, 6s).
-   A animação é aplicada APENAS no elemento `.cta-flow__dot` e no
-   seu `::after` (miolo). NÃO usamos `::before` com animação para
-   evitar o bug de sincronização entre pseudo-elementos. */
+/* A bolinha — agora vem DEPOIS do número */
 .cta-flow__dot {
   position: relative;
   width: 16px;
@@ -1755,7 +1752,7 @@
   opacity: 0.35;
 }
 
-/* Aplica a animação em cada dot com delay progressivo */
+/* Animação das bolinhas — ciclo 9s, delay progressivo */
 .cta-final.is-visible .cta-flow__step:nth-of-type(1) .cta-flow__dot {
   animation: ctaDotSelect 9s ease-in-out 0s infinite;
 }
@@ -1765,7 +1762,6 @@
 .cta-final.is-visible .cta-flow__step:nth-of-type(3) .cta-flow__dot {
   animation: ctaDotSelect 9s ease-in-out 6s infinite;
 }
-
 .cta-final.is-visible .cta-flow__step:nth-of-type(1) .cta-flow__dot::after {
   animation: ctaDotFill 9s ease-in-out 0s infinite;
 }
@@ -1776,8 +1772,6 @@
   animation: ctaDotFill 9s ease-in-out 6s infinite;
 }
 
-/* Acende + halo. Os primeiros 13% (≈1.2s) são a "ativação";
-   o resto do ciclo permanece apagado, esperando a próxima volta. */
 @keyframes ctaDotSelect {
   0% {
     border-color: rgba(0, 255, 136, 0.55);
@@ -1801,8 +1795,6 @@
     box-shadow: 0 0 0 0 rgba(0, 255, 136, 0);
   }
 }
-
-/* Miolo enche e esvazia em sincronia */
 @keyframes ctaDotFill {
   0% {
     opacity: 0.35;
@@ -1837,25 +1829,29 @@
   white-space: nowrap;
   transition: color 0.4s var(--ease);
 }
-
 .cta-flow__step:hover .cta-flow__label {
   color: var(--c-accent-hi);
 }
 
 /* ========================================================
-   CONECTOR — linha com seta (desktop horizontal)
-   ======================================================== */
+   CONECTOR — linha + seta alinhados com a bolinha
+   ========================================================
+   O conector é irmão do step. Ele tem a mesma altura do
+   "head" (número + bolinha) e alinha no mesmo eixo. */
 .cta-flow__connector {
   flex: 1 1 auto;
-  min-width: 32px;
+  min-width: 40px;
+  max-width: 120px;
   height: 16px;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 7px;
+  margin-top: 10px; /* alinha o centro da linha com o centro da bolinha */
+  align-self: flex-start;
 }
 
+/* Linha base (sempre visível em verde fraco) */
 .cta-flow__connector::after {
   content: "";
   position: absolute;
@@ -1872,6 +1868,7 @@
   transform: translateY(-50%);
 }
 
+/* Seta na ponta direita — oculta por padrão (só aparece com pulse) */
 .cta-flow__connector::before {
   content: "";
   position: absolute;
@@ -1883,8 +1880,17 @@
   border-right: 1.5px solid rgba(0, 255, 136, 0.85);
   transform: translateY(-50%) rotate(45deg);
   z-index: 2;
+  opacity: 0;
+  transition: opacity 0.3s var(--ease);
 }
 
+/* Quando a linha verde percorre (pulse), a seta aparece */
+.cta-final.is-visible .cta-flow__connector--1.is-fired::before,
+.cta-final.is-visible .cta-flow__connector--2.is-fired::before {
+  opacity: 1;
+}
+
+/* Pulso — linha verde que percorre o conector e "acende" a seta no fim */
 .cta-flow__connector .cta-flow__pulse {
   position: absolute;
   top: 50%;
@@ -1894,19 +1900,23 @@
   background: var(--c-accent-hi);
   box-shadow: 0 0 10px rgba(0, 255, 136, 0.9);
   transform: translateY(-50%);
-  transition: width 1s var(--ease-out);
+  transition: width 0.9s var(--ease-out);
   z-index: 1;
 }
 
-.cta-final.is-visible .cta-flow__connector .cta-flow__pulse {
-  width: 100%;
-}
-.cta-final.is-visible .cta-flow__connector--1 .cta-flow__pulse {
-  transition-delay: 1.1s;
-}
-.cta-final.is-visible .cta-flow__connector--2 .cta-flow__pulse {
-  transition-delay: 1.6s;
-}
+/* Aqui está o truque: o pulso (linha verde + seta) só aparece
+   quando a bolinha correspondente ao step anterior termina de
+   "acender". Os delays são sincronizados:
+
+   - Dot 1 acende em ~0.2s após is-visible
+   - Dot 2 acende em ~3.2s após is-visible
+   - Dot 3 acende em ~6.2s após is-visible
+
+   Então:
+   - Conector 1 (entre 1 e 2) dispara aos 2.8s
+   - Conector 2 (entre 2 e 3) dispara aos 5.8s
+
+   Isso é feito via JavaScript adicionando a classe `.is-fired`. */
 
 /* ========================================================
    FECHAMENTO
@@ -1928,7 +1938,6 @@
   opacity: 0.92;
   margin: 0;
 }
-
 .cta-final__phrase strong {
   color: var(--c-accent-hi);
   font-weight: 700;
@@ -1953,7 +1962,6 @@
     transform 0.3s var(--ease-out),
     box-shadow 0.4s var(--ease-out);
 }
-
 .cta-final__btn::before {
   content: "";
   position: absolute;
@@ -2011,7 +2019,10 @@
     max-width: 24ch;
   }
   .cta-flow {
-    gap: clamp(8px, 1.5vw, 20px);
+    gap: clamp(16px, 2.5vw, 32px);
+  }
+  .cta-flow__step {
+    min-width: 100px;
   }
   .cta-flow__label {
     font-size: 0.85rem;
@@ -2034,7 +2045,7 @@
     gap: var(--s-5);
   }
   .cta-flow {
-    gap: clamp(6px, 1.2vw, 14px);
+    gap: clamp(12px, 2vw, 24px);
     margin-top: var(--s-2);
   }
   .cta-flow__label {
@@ -2057,18 +2068,15 @@
   .section--cta {
     padding: var(--s-8) 0 var(--s-7);
   }
-
   .cta-final {
     padding: var(--s-6) var(--s-5);
     border-radius: var(--r-lg);
   }
-
   .cta-final__ring--1,
   .cta-final__ring--2,
   .cta-final__ring--3 {
     display: none;
   }
-
   .cta-final__eyebrow {
     font-size: 0.68rem;
     letter-spacing: 0.18em;
@@ -2078,23 +2086,18 @@
   .cta-final__eyebrow::after {
     width: 18px;
   }
-
   .cta-final__title {
     font-size: clamp(1.5rem, 1.1rem + 2vw, 2rem);
     max-width: 100%;
     line-height: 1.14;
   }
-
   .cta-final__content {
     gap: var(--s-5);
     align-items: center;
     text-align: center;
   }
 
-  /* -------- FLUXO VERTICAL --------
-     O bloco é centralizado como um todo (width fit-content + margin auto).
-     Cada step tem largura automática (não 100%), então os labels podem
-     ter larguras diferentes sem quebrar o alinhamento da coluna do dot. */
+  /* Fluxo vertical: cada step vira uma linha [num][dot][label] */
   .cta-flow {
     flex-direction: column;
     align-items: flex-start;
@@ -2103,17 +2106,20 @@
     width: fit-content;
     max-width: 100%;
     margin: var(--s-4) auto 0 auto;
+    padding-top: 0;
   }
-
   .cta-flow__step {
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
     gap: 12px;
     width: auto;
+    min-width: 0;
     padding: 0;
   }
-
+  .cta-flow__step-head {
+    gap: 8px;
+  }
   .cta-flow__num {
     order: -1;
     min-width: 26px;
@@ -2122,13 +2128,11 @@
     opacity: 0.9;
     flex: none;
   }
-
   .cta-flow__dot {
     width: 16px;
     height: 16px;
     flex: none;
   }
-
   .cta-flow__label {
     white-space: nowrap;
     text-align: left;
@@ -2136,23 +2140,21 @@
     letter-spacing: 0.1em;
   }
 
-  /* -------- CONECTOR VERTICAL --------
-     Coluna do dot = num (26px) + gap (12px) + metade do dot (8px) = 46px.
-     O conector tem width: 100% do .cta-flow, então padding-left: 46px
-     faz a linha cair exatamente sob o centro do dot. */
+  /* Conector vertical */
   .cta-flow__connector {
     display: flex;
     align-items: center;
     justify-content: flex-start;
     width: 100%;
     min-width: 0;
+    max-width: none;
     height: 26px;
     flex: none;
     margin: 0;
     padding-left: 46px;
     position: relative;
+    align-self: auto;
   }
-
   .cta-flow__connector::after {
     left: 46px;
     right: auto;
@@ -2167,8 +2169,6 @@
       rgba(0, 255, 136, 0.15)
     );
   }
-
-  /* Seta menor e alinhada ao centro da linha */
   .cta-flow__connector::before {
     right: auto;
     left: 44px;
@@ -2179,17 +2179,20 @@
     border-top: 1.5px solid rgba(0, 255, 136, 0.85);
     border-right: 1.5px solid rgba(0, 255, 136, 0.85);
     transform: rotate(135deg);
+    opacity: 0;
   }
-
+  .cta-flow__connector.is-fired::before {
+    opacity: 1;
+  }
   .cta-flow__connector .cta-flow__pulse {
     top: 0;
     left: 46px;
     width: 1px;
     height: 0;
     transform: none;
-    transition: height 1s var(--ease-out);
+    transition: height 0.9s var(--ease-out);
   }
-  .cta-final.is-visible .cta-flow__connector .cta-flow__pulse {
+  .cta-flow__connector.is-fired .cta-flow__pulse {
     width: 1px;
     height: 100%;
   }
@@ -2197,7 +2200,6 @@
   .cta-final__phrase {
     font-size: 1rem;
   }
-
   .cta-final__btn {
     width: 100%;
     max-width: 320px;
@@ -2210,15 +2212,12 @@
   .section--cta {
     padding: var(--s-7) 0 var(--s-6);
   }
-
   .cta-final {
     padding: var(--s-6) var(--s-4);
   }
-
   .cta-final__title {
     font-size: clamp(1.35rem, 1rem + 2vw, 1.75rem);
   }
-
   .cta-final__eyebrow {
     font-size: 0.62rem;
     letter-spacing: 0.16em;
@@ -2227,7 +2226,6 @@
   .cta-final__eyebrow::after {
     width: 14px;
   }
-
   .cta-flow__step {
     gap: 10px;
   }
@@ -2239,8 +2237,6 @@
     font-size: 0.74rem;
     letter-spacing: 0.08em;
   }
-
-  /* Coluna do dot = num (22px) + gap (10px) + metade do dot (8px) = 40px */
   .cta-flow__connector {
     padding-left: 40px;
     height: 22px;
@@ -2253,10 +2249,7 @@
     left: 38px;
     width: 4px;
     height: 4px;
-    border-top-width: 1.5px;
-    border-right-width: 1.5px;
   }
-
   .cta-final__phrase {
     font-size: 0.92rem;
   }
@@ -2272,12 +2265,10 @@
   .cta-final {
     padding: var(--s-5) var(--s-3);
   }
-
   .cta-final__title {
     font-size: 1.15rem;
     line-height: 1.18;
   }
-
   .cta-flow__num {
     min-width: 18px;
     font-size: 0.65rem;
@@ -2298,12 +2289,10 @@
     width: 4px;
     height: 4px;
   }
-
   .cta-flow__label {
     font-size: 0.68rem;
     letter-spacing: 0.06em;
   }
-
   .cta-final__eyebrow {
     font-size: 0.58rem;
     letter-spacing: 0.14em;
@@ -2312,7 +2301,6 @@
   .cta-final__eyebrow::after {
     width: 12px;
   }
-
   .cta-final__btn {
     font-size: 0.75rem;
     padding: 13px 16px;
@@ -2339,18 +2327,15 @@
     opacity: 1 !important;
     transform: none !important;
   }
-
   .cta-final__ring,
   .cta-final__glow,
   .cta-final__dot,
   .cta-final__dot-line {
     animation: none !important;
   }
-
-  .cta-flow__connector::before {
-    opacity: 1;
-  }
+  .cta-flow__connector::before,
   .cta-flow__connector .cta-flow__pulse {
+    opacity: 1 !important;
     width: 100% !important;
     height: 100% !important;
   }
