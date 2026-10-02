@@ -192,7 +192,18 @@
     overflow: hidden;
   }
 }
+/* Cor do botão hamburger/X quando o menu está aberto */
+.nav-toggle[aria-expanded="true"] {
+  color: var(--c-white);
+}
+.nav-toggle[aria-expanded="true"]:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
 
+/* Cor quando fechado (padrão) */
+.nav-toggle[aria-expanded="false"] {
+  color: var(--c-text);
+}
 /* ---------- SECTION ---------- */
 .section {
   padding: var(--s-9) 0;
