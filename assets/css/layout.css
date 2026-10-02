@@ -196,22 +196,22 @@
   }
   .section__head {
     margin-bottom: var(--s-6);
-    text-align: center; /* ← NOVO: centraliza no mobile */
-    margin-left: auto; /* ← NOVO */
-    margin-right: auto; /* ← NOVO */
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
   }
   .section__head--split {
     grid-template-columns: 1fr;
-    align-items: center; /* ← NOVO: centraliza verticalmente */
+    align-items: center;
     gap: var(--s-4);
-    text-align: center; /* ← NOVO */
+    text-align: center;
   }
   .section__eyebrow {
-    justify-content: center; /* ← NOVO: pílula + linha à esquerda centralizadas */
+    justify-content: center;
   }
   .section__lede {
-    margin-left: auto; /* ← NOVO */
-    margin-right: auto; /* ← NOVO */
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
@@ -227,20 +227,35 @@
   color: var(--c-ink-300);
   padding-top: var(--s-8);
 }
+
 .footer__grid {
   display: grid;
-  grid-template-columns: 1.8fr 1fr 1fr 1.2fr;
+  grid-template-columns: 1.6fr 1fr 1fr 1.2fr;
   gap: var(--s-6);
   padding-bottom: var(--s-7);
   align-items: start;
 }
+
+/* Marca do rodapé — só a logo, alinhada ao topo das outras colunas */
+.footer__brand {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-4);
+  padding-top: 2px;
+}
+
+.footer__brand .brand--footer {
+  gap: 0;
+}
+
 .footer__brand .footer__desc {
   color: var(--c-ink-400);
   font-size: var(--fs-sm);
-  max-width: 340px;
-  margin-top: var(--s-4);
+  max-width: 320px;
+  margin: 0;
   line-height: 1.65;
 }
+
 .footer__col h4 {
   color: var(--c-white);
   font-family: var(--font-body);
@@ -250,6 +265,7 @@
   letter-spacing: 0.16em;
   margin: 0 0 var(--s-5);
 }
+
 .footer__col ul {
   display: flex;
   flex-direction: column;
@@ -257,14 +273,17 @@
   margin: 0;
   padding: 0;
 }
+
 .footer__col a {
   color: var(--c-ink-300);
   font-size: var(--fs-sm);
   transition: color 0.15s var(--ease);
 }
+
 .footer__col a:hover {
   color: var(--c-accent);
 }
+
 .footer__col li {
   color: var(--c-ink-400);
   font-size: var(--fs-sm);
@@ -275,6 +294,7 @@
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   padding: var(--s-5) 0;
 }
+
 .footer__base-inner {
   display: flex;
   justify-content: space-between;
@@ -288,17 +308,19 @@
 @media (max-width: 900px) {
   .footer__grid {
     grid-template-columns: 1fr 1fr;
-    gap: var(--s-5);
+    gap: var(--s-6);
   }
   .footer__brand {
     grid-column: 1 / -1;
+    padding-top: 0;
+    margin-bottom: var(--s-2);
   }
 }
 
 @media (max-width: 520px) {
   .footer__grid {
     grid-template-columns: 1fr;
-    gap: var(--s-5);
+    gap: var(--s-6);
   }
   .footer__base-inner {
     flex-direction: column;

@@ -29,7 +29,6 @@ h4 {
 }
 
 p {
-  color: var(--c-text-soft);
   text-wrap: pretty;
 }
 
