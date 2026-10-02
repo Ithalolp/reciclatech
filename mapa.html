@@ -3,95 +3,617 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mapa de pontos — ReciclaTech</title>
+    <meta
+      name="description"
+      content="TechRecicla — Encontre pontos de descarte de lixo eletrônico perto de você. Plataforma de geolocalização e educação ambiental."
+    />
+    <title>TechRecicla — Mapa de pontos de coleta</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/img/logorecicla.png" />
+    <link rel="apple-touch-icon" href="assets/img/logorecicla.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
     <link
       rel="stylesheet"
       href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
     />
-    <link rel="stylesheet" href="css/reset.css" />
-    <link rel="stylesheet" href="css/variables.css" />
-    <link rel="stylesheet" href="css/base.css" />
-    <link rel="stylesheet" href="css/components.css" />
-    <link rel="stylesheet" href="css/layout.css" />
-    <link rel="stylesheet" href="css/mapa.css" />
+    <link rel="stylesheet" href="assets/css/reset.css" />
+    <link rel="stylesheet" href="assets/css/tokens.css" />
+    <link rel="stylesheet" href="assets/css/base.css" />
+    <link rel="stylesheet" href="assets/css/components.css" />
+    <link rel="stylesheet" href="assets/css/layout.css" />
+    <link rel="stylesheet" href="assets/css/pages.css" />
   </head>
   <body>
-    <header class="site-header">
+    <a class="skip-link" href="#main">Pular para o conteúdo</a>
+
+    <!-- HEADER -->
+    <header class="site-header" id="site-header">
       <div class="container header-inner">
-        <a href="index.html" class="logo">
-          <span class="logo__icon" aria-hidden="true">♻️</span>
-          <span class="logo__text" data-nome-plataforma>ReciclaTech</span>
+        <a
+          href="index.html"
+          class="brand"
+          aria-label="TechRecicla, página inicial"
+        >
+          <span class="brand__mark" aria-hidden="true"></span>
         </a>
+        <nav class="primary-nav" data-nav aria-label="Navegação principal">
+          <a href="index.html#impacto">Impacto</a>
+          <a href="index.html#como">Como funciona</a>
+          <a href="index.html#explorar">Explorar</a>
+          <a href="index.html#categorias">Materiais</a>
+          <a href="index.html#consciencia" class="nav-cta">
+            Conscientização
+            <span data-icone="lightbulb" data-tam="14"></span>
+          </a>
+        </nav>
         <button
-          class="menu-toggle"
+          class="nav-toggle"
           data-menu-toggle
           aria-label="Abrir menu"
           aria-expanded="false"
-        >
-          ☰
-        </button>
-        <nav class="site-nav" data-nav aria-label="Navegação principal">
-          <a href="index.html">Início</a>
-          <a href="mapa.html">Mapa</a>
-          <a href="educacao.html">Educação</a>
-          <a href="sobre.html">Sobre</a>
-          <a href="admin.html" class="nav-admin">Admin</a>
-        </nav>
+        ></button>
       </div>
     </header>
 
-    <main class="pagina-mapa">
-      <section class="mapa-topo">
-        <div class="container">
-          <h1>Mapa de pontos de coleta</h1>
-          <p>Filtre por material e cidade, e encontre o ponto mais próximo.</p>
+    <main id="main">
+      <!-- HERO -->
+      <section class="hero" id="topo">
+        <div class="hero__grid-bg" aria-hidden="true"></div>
+        <div class="container hero__inner">
+          <div class="hero__content">
+            <span class="hero__eyebrow">
+              <span class="hero__dot" aria-hidden="true"></span>
+              Reciclagem eletrônica · Onde descartar
+            </span>
 
-          <form class="filtros" id="form-filtros" onsubmit="return false;">
-            <div class="filtros__campo">
-              <label for="filtro-categoria">Material</label>
-              <select id="filtro-categoria"></select>
+            <h1 class="hero__title">
+              Encontre o destino certo
+              <span class="hero__title-line">para o seu</span>
+              <span class="hero__title-accent">lixo eletrônico.</span>
+            </h1>
+
+            <p class="hero__lede">
+              Mapeamos pontos de coleta reais, explicamos o que cada um aceita e
+              conectamos você ao descarte correto em segundos.
+            </p>
+
+            <div class="hero__actions">
+              <a href="#explorar" class="btn btn--primary btn--lg">
+                <span data-icone="map-pin" data-tam="18"></span>
+                Encontrar ponto próximo
+              </a>
+              <a href="#como" class="btn btn--ghost btn--lg">
+                Como funciona
+                <span data-icone="arrow-down" data-tam="16"></span>
+              </a>
             </div>
-            <div class="filtros__campo">
-              <label for="filtro-cidade">Cidade</label>
-              <select id="filtro-cidade"></select>
-            </div>
-            <div class="filtros__campo filtros__campo--busca">
-              <label for="filtro-busca">Buscar</label>
-              <input
-                type="search"
-                id="filtro-busca"
-                placeholder="Nome, bairro..."
+          </div>
+
+          <div class="hero__scene" aria-hidden="true">
+            <div class="hero__scene-orbit hero__scene-orbit--outer"></div>
+            <div class="hero__scene-orbit hero__scene-orbit--inner"></div>
+
+            <svg
+              class="hero__scene-lines"
+              viewBox="0 0 400 400"
+              preserveAspectRatio="none"
+            >
+              <path
+                class="hero__scene-line"
+                style="--delay: 0s"
+                d="M 60 100 C 140 140, 180 180, 200 200"
               />
+              <path
+                class="hero__scene-line"
+                style="--delay: 0.4s"
+                d="M 340 120 C 280 150, 230 180, 200 200"
+              />
+              <path
+                class="hero__scene-line"
+                style="--delay: 0.8s"
+                d="M 200 340 C 200 290, 200 250, 200 200"
+              />
+            </svg>
+
+            <div class="hero__scene-core">
+              <span
+                class="hero__scene-core-icon"
+                data-icone="recycle"
+                data-tam="40"
+              ></span>
+              <span class="hero__scene-core-label">Novo ciclo</span>
             </div>
-          </form>
+
+            <div class="hero__scene-card hero__scene-card--phone">
+              <span
+                class="hero__scene-card-icon"
+                data-icone="smartphone"
+                data-tam="20"
+              ></span>
+              <span class="hero__scene-card-label">Celulares</span>
+            </div>
+
+            <div class="hero__scene-card hero__scene-card--laptop">
+              <span
+                class="hero__scene-card-icon"
+                data-icone="laptop"
+                data-tam="20"
+              ></span>
+              <span class="hero__scene-card-label">Computadores</span>
+            </div>
+
+            <div class="hero__scene-card hero__scene-card--battery">
+              <span
+                class="hero__scene-card-icon"
+                data-icone="battery"
+                data-tam="20"
+              ></span>
+              <span class="hero__scene-card-label">Pilhas</span>
+            </div>
+          </div>
         </div>
       </section>
 
-      <section class="mapa-corpo">
-        <div class="mapa-wrap">
-          <div
-            id="mapa-principal"
-            role="application"
-            aria-label="Mapa de pontos de coleta"
-          ></div>
-        </div>
-        <aside class="mapa-sidebar" aria-live="polite">
-          <p class="contador" id="contador-pontos">Carregando...</p>
-          <div id="lista-pontos" class="lista-pontos"></div>
-        </aside>
-      </section>
-    </main>
+      <!-- MÉTRICAS / IMPACTO -->
+      <section class="section section--impact" id="impacto">
+        <div class="container">
+          <header class="section__head">
+            <span class="section__eyebrow">O problema</span>
+            <h2 class="section__title">
+              O lixo eletrônico é o resíduo que cresce mais rápido no mundo.
+            </h2>
+            <p class="section__lede">
+              Metais pesados, plásticos técnicos e compostos raros vão para o
+              solo quando não há descarte correto. Nós existimos para mudar esse
+              fluxo.
+            </p>
+          </header>
 
-    <footer class="site-footer site-footer--simple">
-      <div class="container footer-base__inner">
-        <p>
-          © <span data-ano></span> <span data-nome-plataforma>ReciclaTech</span>
-        </p>
-        <p><a href="index.html">Voltar ao início</a></p>
+          <div class="metrics">
+            <article class="metric" data-reveal>
+              <span
+                class="metric__icon"
+                data-icone="globe"
+                data-tam="22"
+              ></span>
+              <span class="metric__value" data-count="62">0</span>
+              <span class="metric__unit">mi de toneladas</span>
+              <p class="metric__desc">
+                de e-lixo geradas por ano em todo o planeta.
+              </p>
+              <span class="metric__source">Global E-waste Monitor · ONU</span>
+            </article>
+            <article class="metric" data-reveal>
+              <span
+                class="metric__icon"
+                data-icone="recycle"
+                data-tam="22"
+              ></span>
+              <span class="metric__value" data-count="22">0</span>
+              <span class="metric__unit">% reciclado</span>
+              <p class="metric__desc">
+                Apenas essa fração é formalmente reciclada no mundo.
+              </p>
+              <span class="metric__source">Global E-waste Monitor · ONU</span>
+            </article>
+            <article class="metric" data-reveal>
+              <span
+                class="metric__icon"
+                data-icone="alert"
+                data-tam="22"
+              ></span>
+              <span class="metric__value" data-count="60" data-prefix="+"
+                >0</span
+              >
+              <span class="metric__unit">elementos químicos</span>
+              <p class="metric__desc">
+                podem estar presentes em um único aparelho eletrônico.
+              </p>
+              <span class="metric__source">ONU Meio Ambiente</span>
+            </article>
+            <article class="metric metric--accent" data-reveal>
+              <span
+                class="metric__icon"
+                data-icone="check"
+                data-tam="22"
+              ></span>
+              <span class="metric__value" data-count="100">0</span>
+              <span class="metric__unit">% possível</span>
+              <p class="metric__desc">
+                quando o descarte correto está a um clique de distância.
+              </p>
+              <span class="metric__source">— TechRecicla</span>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- COMO FUNCIONA -->
+      <section class="section section--steps" id="como">
+        <div class="container">
+          <header class="section__head section__head--center">
+            <span class="section__eyebrow">Como funciona</span>
+            <h2 class="section__title">Encontre, escolha e descarte.</h2>
+            <p class="section__lede">
+              Três etapas simples conectam você ao ponto de coleta ideal — sem
+              cadastro, sem burocracia, direto ao que importa.
+            </p>
+          </header>
+
+          <ol class="steps">
+            <li class="step" data-reveal>
+              <span class="step__num" aria-hidden="true">01</span>
+              <span class="step__icon" aria-hidden="true">
+                <span data-icone="smartphone" data-tam="26"></span>
+              </span>
+              <h3 class="step__title">Escolha o material</h3>
+              <p class="step__desc">
+                Selecione o tipo de eletrônico que deseja descartar — celular,
+                pilha, computador, cabo ou outro resíduo.
+              </p>
+            </li>
+            <li class="step" data-reveal>
+              <span class="step__num" aria-hidden="true">02</span>
+              <span class="step__icon" aria-hidden="true">
+                <span data-icone="map-pin" data-tam="26"></span>
+              </span>
+              <h3 class="step__title">Veja os pontos</h3>
+              <p class="step__desc">
+                Encontre locais que recebem esse material perto de você, com
+                horário de funcionamento e o que cada um aceita.
+              </p>
+            </li>
+            <li class="step" data-reveal>
+              <span class="step__num" aria-hidden="true">03</span>
+              <span class="step__icon" aria-hidden="true">
+                <span data-icone="recycle" data-tam="26"></span>
+              </span>
+              <h3 class="step__title">Faça o descarte</h3>
+              <p class="step__desc">
+                Escolha o ponto ideal, abra a rota no Google Maps e entregue o
+                eletrônico para reciclagem correta.
+              </p>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- EXPLORAR / MAPA -->
+      <section class="section section--explore" id="explorar">
+        <div class="container">
+          <header class="section__head section__head--split">
+            <div>
+              <span class="section__eyebrow">Explorar</span>
+              <h2 class="section__title">Encontre um ponto perto de você.</h2>
+            </div>
+            <p class="section__lede">
+              Dados atualizados a partir do painel administrativo. Filtre por
+              material, cidade ou nome.
+            </p>
+          </header>
+
+          <div class="explore">
+            <aside class="explore__panel">
+              <form class="filters" id="form-filtros" onsubmit="return false;">
+                <div class="field">
+                  <label for="filtro-categoria">Material</label>
+                  <select id="filtro-categoria" name="categoria"></select>
+                </div>
+                <div class="field">
+                  <label for="filtro-cidade">Cidade</label>
+                  <select id="filtro-cidade" name="cidade"></select>
+                </div>
+                <div class="field">
+                  <label for="filtro-busca">Buscar</label>
+                  <input
+                    type="search"
+                    id="filtro-busca"
+                    name="busca"
+                    placeholder="Nome ou bairro"
+                  />
+                </div>
+              </form>
+
+              <div class="explore__meta">
+                <span id="contador-pontos" class="explore__counter"
+                  >Carregando…</span
+                >
+                <button type="button" class="btn-link" id="btn-limpar" disabled>
+                  Limpar filtros
+                </button>
+              </div>
+
+              <div class="results-wrap">
+                <div class="results-container">
+                  <div id="lista-pontos" class="results"></div>
+                </div>
+                <div class="results-fade" aria-hidden="true"></div>
+                <div class="results-hint" aria-hidden="true">
+                  <span data-icone="arrow-down" data-tam="14"></span>
+                  <span class="results-hint__desktop">Role para ver mais</span>
+                  <span class="results-hint__mobile"
+                    >Deslize para ver mais</span
+                  >
+                </div>
+              </div>
+            </aside>
+
+            <div class="explore__map">
+              <div
+                id="mapa-home"
+                role="application"
+                aria-label="Mapa de pontos de coleta"
+              ></div>
+              <div class="explore__map-overlay" aria-hidden="true">
+                <span data-icone="target" data-tam="14"></span>
+                <span>Pontos ativos</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CATEGORIAS -->
+      <section class="section section--categories" id="categorias">
+        <div class="container">
+          <header class="section__head">
+            <span class="section__eyebrow">Materiais</span>
+            <h2 class="section__title">O que você pode descartar aqui.</h2>
+            <p class="section__lede">
+              Cada categoria mostra os pontos que aceitam aquele tipo de
+              resíduo.
+            </p>
+          </header>
+          <div class="categories" id="grid-categorias" data-reveal-group></div>
+        </div>
+      </section>
+
+      <!-- CONSCIENTIZAÇÃO — timeline -->
+      <section class="section section--editorial" id="consciencia">
+        <div class="container editorial">
+          <div class="editorial__quote" data-reveal>
+            <span class="section__eyebrow">Conscientização</span>
+            <blockquote>
+              “<em>Antes de descartar</em>, pense em um novo uso.
+              <em>Reutilizar</em>
+              também é <em>cuidar do futuro</em>.”
+            </blockquote>
+
+            <!-- Bloco educativo: antes de descartar, pergunte -->
+            <div class="editorial__check">
+              <p class="editorial__check-title">Antes de reciclar:</p>
+
+              <ul class="editorial__check-list">
+                <li class="editorial__check-item">
+                  <span class="editorial__check-num" aria-hidden="true"
+                    >01</span
+                  >
+                  <span class="editorial__check-question">Reutilizar</span>
+                  <span class="editorial__check-arrow" aria-hidden="true">
+                    <span data-icone="arrow" data-tam="14"></span>
+                  </span>
+                  <span class="editorial__check-action"
+                    >Sempre que possível</span
+                  >
+                </li>
+
+                <li class="editorial__check-item">
+                  <span class="editorial__check-num" aria-hidden="true"
+                    >02</span
+                  >
+                  <span class="editorial__check-question">Consertar</span>
+                  <span class="editorial__check-arrow" aria-hidden="true">
+                    <span data-icone="arrow" data-tam="14"></span>
+                  </span>
+                  <span class="editorial__check-action">Antes de trocar</span>
+                </li>
+
+                <li class="editorial__check-item">
+                  <span class="editorial__check-num" aria-hidden="true"
+                    >03</span
+                  >
+                  <span class="editorial__check-question">Reciclar</span>
+                  <span class="editorial__check-arrow" aria-hidden="true">
+                    <span data-icone="arrow" data-tam="14"></span>
+                  </span>
+                  <span class="editorial__check-action"
+                    >Quando não há mais uso</span
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="timeline" data-timeline>
+            <div class="timeline__progress" data-timeline-progress></div>
+
+            <div class="timeline__item" data-timeline-item>
+              <span class="timeline__dot" aria-hidden="true"></span>
+              <span class="timeline__num">01</span>
+              <h3 class="timeline__title">Antes de descartar</h3>
+              <p class="timeline__text">
+                Apague dados pessoais, remova cartões SIM, pen drives e cartões
+                de memória. Se o aparelho ainda funciona, doe para escolas, ONGs
+                ou pessoas que possam dar um novo uso.
+              </p>
+            </div>
+
+            <div class="timeline__item" data-timeline-item>
+              <span class="timeline__dot" aria-hidden="true"></span>
+              <span class="timeline__num">02</span>
+              <h3 class="timeline__title">Escolha o ponto certo</h3>
+              <p class="timeline__text">
+                Nem todo ponto aceita todo material. Verifique as categorias
+                aceitas antes de se deslocar. Use os filtros do mapa para
+                encontrar o local mais adequado ao seu resíduo.
+              </p>
+            </div>
+
+            <div class="timeline__item" data-timeline-item>
+              <span class="timeline__dot" aria-hidden="true"></span>
+              <span class="timeline__num">03</span>
+              <h3 class="timeline__title">Prefira o reuso</h3>
+              <p class="timeline__text">
+                Reparar um aparelho evita a extração de matéria-prima virgem e
+                reduz drasticamente o impacto ambiental. Reutilizar é sempre
+                melhor que reciclar.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+              <!-- CTA FINAL — ENCERRAMENTO CONCEITUAL -->
+      <section class="section section--cta" id="encerramento">
+        <div class="container">
+          <div class="cta-final">
+            <!-- FUNDO — detalhes de ciclo -->
+            <div class="cta-final__bg" aria-hidden="true">
+              <span class="cta-final__ring cta-final__ring--1"></span>
+              <span class="cta-final__ring cta-final__ring--2"></span>
+              <span class="cta-final__ring cta-final__ring--3"></span>
+              <div class="cta-final__glow"></div>
+
+              <svg
+                class="cta-final__dots"
+                viewBox="0 0 1200 500"
+                preserveAspectRatio="xMidYMid slice"
+              >
+                <line class="cta-final__dot-line" x1="120" y1="120" x2="340" y2="220" />
+                <line class="cta-final__dot-line" x1="340" y1="220" x2="620" y2="140" />
+                <line class="cta-final__dot-line" x1="620" y1="140" x2="880" y2="260" />
+                <line class="cta-final__dot-line" x1="880" y1="260" x2="1080" y2="180" />
+                <line class="cta-final__dot-line" x1="200" y1="380" x2="480" y2="340" />
+                <line class="cta-final__dot-line" x1="480" y1="340" x2="760" y2="400" />
+                <line class="cta-final__dot-line" x1="760" y1="400" x2="1020" y2="360" />
+                <circle class="cta-final__dot" cx="120" cy="120" r="2.5" />
+                <circle class="cta-final__dot" cx="340" cy="220" r="2.5" />
+                <circle class="cta-final__dot" cx="620" cy="140" r="2.5" />
+                <circle class="cta-final__dot" cx="880" cy="260" r="2.5" />
+                <circle class="cta-final__dot" cx="1080" cy="180" r="2.5" />
+                <circle class="cta-final__dot" cx="200" cy="380" r="2.5" />
+                <circle class="cta-final__dot" cx="480" cy="340" r="2.5" />
+                <circle class="cta-final__dot" cx="760" cy="400" r="2.5" />
+                <circle class="cta-final__dot" cx="1020" cy="360" r="2.5" />
+              </svg>
+            </div>
+
+            <!-- CONTEÚDO -->
+            <div class="cta-final__content">
+              <span class="cta-final__eyebrow">Pequenas escolhas, novos ciclos</span>
+
+              <h2 class="cta-final__title">
+                O destino de um eletrônico começa na
+                <em>sua próxima escolha.</em>
+              </h2>
+
+              <!-- FLUXO -->
+             <div
+  class="cta-flow"
+  aria-label="Reutilizar, reparar e destinar corretamente"
+>
+  <div class="cta-flow__step">
+    <span class="cta-flow__num">01</span>
+    <span class="cta-flow__dot" aria-hidden="true"></span>
+    <span class="cta-flow__label">Reutilizar</span>
+  </div>
+
+  <span
+    class="cta-flow__connector cta-flow__connector--1"
+    aria-hidden="true"
+  >
+    <span class="cta-flow__pulse"></span>
+  </span>
+
+  <div class="cta-flow__step">
+    <span class="cta-flow__num">02</span>
+    <span class="cta-flow__dot" aria-hidden="true"></span>
+    <span class="cta-flow__label">Reparar</span>
+  </div>
+
+  <span
+    class="cta-flow__connector cta-flow__connector--2"
+    aria-hidden="true"
+  >
+    <span class="cta-flow__pulse"></span>
+  </span>
+
+  <div class="cta-flow__step">
+    <span class="cta-flow__num">03</span>
+    <span class="cta-flow__dot" aria-hidden="true"></span>
+    <span class="cta-flow__label">Destinar corretamente</span>
+  </div>
+</div>
+
+              <!-- FECHAMENTO -->
+              <div class="cta-final__closing">
+                <p class="cta-final__phrase">
+                  Faça parte dessa <strong>mudança.</strong>
+                </p>
+
+                <a href="#explorar" class="cta-final__btn">
+                  <span>Encontrar um ponto próximo</span>
+                  <span data-icone="arrow" data-tam="18"></span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <div class="container footer__grid">
+        <div class="footer__brand">
+          <a href="index.html" class="brand brand--footer">
+            <span class="brand__mark" aria-hidden="true"></span>
+            <span class="brand__name" data-nome-plataforma>TechRecicla</span>
+          </a>
+          <p class="footer__desc">
+            Plataforma de localização de pontos de descarte de resíduos
+            eletrônicos e educação ambiental.
+          </p>
+        </div>
+        <div class="footer__col">
+          <h4>Navegar</h4>
+          <ul>
+            <li><a href="index.html#impacto">Impacto</a></li>
+            <li><a href="index.html#explorar">Explorar</a></li>
+            <li><a href="mapa.html">Mapa completo</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Materiais</h4>
+          <ul id="footer-categorias"></ul>
+        </div>
+        <div class="footer__col">
+          <h4>Projeto</h4>
+          <ul>
+            <li>Sistemas de Informação</li>
+            <li>Extensão universitária</li>
+            <li>Tecnologia e Sociedade</li>
+            <li><a href="admin.html">Painel administrativo</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__base">
+        <div class="container footer__base-inner">
+          <p>
+            © <span data-ano></span>
+          </p>
+          <p>Projeto de extensão · Feito com HTML, CSS e JavaScript</p>
+        </div>
       </div>
     </footer>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script type="module" src="js/pagina-mapa.js"></script>
+    <script type="module" src="js/home.js"></script>
   </body>
 </html>
