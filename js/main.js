@@ -47,6 +47,7 @@ function configurarMenu() {
 
   const definir = (aberto) => {
     nav.classList.toggle("is-open", aberto);
+    document.body.classList.toggle("nav-open", aberto);
     botao.setAttribute("aria-expanded", String(aberto));
     botao.setAttribute("aria-label", aberto ? "Fechar menu" : "Abrir menu");
     botao.innerHTML = icone(aberto ? "x" : "menu", { tam: 22 });
@@ -56,6 +57,13 @@ function configurarMenu() {
   botao.addEventListener("click", () =>
     definir(!nav.classList.contains("is-open")),
   );
+
+  // Fecha ao clicar em qualquer link do menu
+  nav.addEventListener("click", (e) => {
+    if (e.target.closest("a")) definir(false);
+  });
+
+  // Fecha com tecla Escape
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && nav.classList.contains("is-open")) {
       definir(false);
